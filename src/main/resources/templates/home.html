@@ -88,7 +88,7 @@
         </thead>
         <tbody>
         <tr th:each="log : ${logs}">
-            <td th:text="${log.dateTime}"></td>
+            <td th:text="${#dates.format(log.dateTime, 'dd.MM.yyyy HH:mm')}"></td>
             <td th:text="${log.numberStation}"></td>
             <td th:text="${log.workHours}"></td>
             <td th:text="${log.oilPressure}"></td>

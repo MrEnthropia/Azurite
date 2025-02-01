@@ -20,7 +20,7 @@ public class MainController {
 
     @GetMapping("/")
     public String home( Model model){
-        Iterable<Log> logs = logsRepository.findAll();
+        Iterable<Log> logs = logsRepository.findTop7ByOrderByDateTimeDesc();
         model.addAttribute("logs", logs);
 
         return "home";
@@ -34,10 +34,11 @@ public class MainController {
 
     @GetMapping("/view")
     public String view( Model model){
-//        Iterable<Log> logsStation1 = logsService.findByNumber(1);
-//        Iterable<Log> logsStation2 = logsService.findByNumber(2);
-//        model.addAttribute("logsStation1", logsStation1);
-//        model.addAttribute("logsStation2", logsStation2);
+        Iterable<Log> logsStation1 = logsRepository.findByNumberStation(1);
+        Iterable<Log> logsStation2 = logsRepository.findByNumberStation(2);
+        model.addAttribute("logsStation1", logsStation1);
+        model.addAttribute("logsStation2", logsStation2);
+
         return "view";
 
     }

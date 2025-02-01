@@ -101,7 +101,6 @@
         <thead>
         <tr>
             <th>Дата и время</th>
-            <th>Номер станции</th>
             <th>Часы работы</th>
             <th>Давление масла</th>
             <th>Температура масла</th>
@@ -113,8 +112,17 @@
         </tr>
         </thead>
         <tbody>
-        <tr><td>Данные 1</td><td>Данные 2</td><td>Данные 3</td><td>Данные 4</td><td>Данные 5</td><td>Данные 6</td><td>Данные 7</td><td>Данные 8</td><td>Данные 9</td><td>Данные 10</td></tr>
-        <tr><td>Данные 1</td><td>Данные 2</td><td>Данные 3</td><td>Данные 4</td><td>Данные 5</td><td>Данные 6</td><td>Данные 7</td><td>Данные 8</td><td>Данные 9</td><td>Данные 10</td></tr>
+        <tr th:each="logs1 : ${logsStation1}">
+            <td th:text="${#dates.format(logs1.dateTime, 'dd.MM.yyyy HH:mm')}"></td>
+            <td th:text="${logs1.workHours}"></td>
+            <td th:text="${logs1.oilPressure}"></td>
+            <td th:text="${logs1.oilTemp}"></td>
+            <td th:text="${logs1.oilTopping}"></td>
+            <td th:text="${logs1.antifreezeTopping}"></td>
+            <td th:text="${logs1.exhaustTempLeft}"></td>
+            <td th:text="${logs1.exhaustTempRight}"></td>
+            <td th:text="${logs1.comment}"></td>
+        </tr>
         </tbody>
     </table>
 </div>
@@ -125,7 +133,6 @@
         <thead>
         <tr>
             <th>Дата и время</th>
-            <th>Номер станции</th>
             <th>Часы работы</th>
             <th>Давление масла</th>
             <th>Температура масла</th>
@@ -137,8 +144,17 @@
         </tr>
         </thead>
         <tbody>
-        <tr><td>Данные 1</td><td>Данные 2</td><td>Данные 3</td><td>Данные 4</td><td>Данные 5</td><td>Данные 6</td><td>Данные 7</td><td>Данные 8</td><td>Данные 9</td><td>Данные 10</td></tr>
-        <tr><td>Данные 1</td><td>Данные 2</td><td>Данные 3</td><td>Данные 4</td><td>Данные 5</td><td>Данные 6</td><td>Данные 7</td><td>Данные 8</td><td>Данные 9</td><td>Данные 10</td></tr>
+        <tr th:each="logs2 : ${logsStation2}">
+            <td th:text="${#dates.format(logs2.dateTime, 'dd.MM.yyyy HH:mm')}"></td>
+            <td th:text="${logs2.workHours}"></td>
+            <td th:text="${logs2.oilPressure}"></td>
+            <td th:text="${logs2.oilTemp}"></td>
+            <td th:text="${logs2.oilTopping}"></td>
+            <td th:text="${logs2.antifreezeTopping}"></td>
+            <td th:text="${logs2.exhaustTempLeft}"></td>
+            <td th:text="${logs2.exhaustTempRight}"></td>
+            <td th:text="${logs2.comment}"></td>
+        </tr>
         </tbody>
     </table>
 </div>
@@ -149,7 +165,6 @@
         <thead>
         <tr>
             <th>Дата и время</th>
-            <th>Номер станции</th>
             <th>Часы работы</th>
             <th>Давление масла</th>
             <th>Температура масла</th>

@@ -6,6 +6,9 @@ import ru.MrEnthropia.UEAJ.models.Log;
 
 import java.util.List;
 
-public interface LogsRepository extends CrudRepository<Log, Long>{
 
+public interface LogsRepository extends JpaRepository<Log, Long> {
+
+    Iterable<Log> findByNumberStation(int i);
+    List<Log> findTop7ByOrderByDateTimeDesc();
 }
