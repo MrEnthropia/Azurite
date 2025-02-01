@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Справка и инструкции</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #003366; /* Тёмно-синий */
+            color: white;
+            padding: 10px 0;
+            text-align: left;
+        }
+        .nav-bar {
+            display: flex;
+            justify-content: flex-end;
+            background-color: #ff9900; /* Оранжевый */
+            padding: 10px;
+        }
+        .nav-bar a {
+            color: white;
+            margin-left: 20px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .nav-bar a:hover {
+            text-decoration: underline;
+        }
+        nav button {
+            background-color: #0033cc; /* Синий фон для кнопок */
+            border: none;
+            padding: 15px 20px;
+            cursor: pointer;
+            color: white;
+            font-weight: bold;
+            border-radius: 5px;
+            margin-right: 10px;
+        }
+        nav button:hover {
+            background-color: #002299; /* Темно-синий для ховера */
+        }
+        .content {
+            display: none;
+            padding: 20px;
+            background-color: #ffffff; /* Белый фон для вкладок */
+            color: black; /* Черный текст */
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            margin-top: 20px;
+        }
+        .active {
+            display: block;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            border: 1px solid #003366;
+            padding: 10px;
+            text-align: left;
+        }
+        th {
+            background-color: #003366;
+            color: white;
+        }
+        tr:nth-child(even) {
+            background-color: #e6f0ff; /* Светло-синий */
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Электронная система учёта обслуживания и ремонта "Пихта"</h1>
+</header>
+
+<div class="nav-bar">
+    <a href="/">Главная страница</a>
+    <a href="/add-log">Добавить запись</a>
+    <a href="/view">Просмотр журнала</a>
+    <a href="/instruction">Справка и инструкции</a>
+</div>
+
+<nav>
+    <button onclick="showTab('tab1')">Порядок ежедневного обслуживания</button>
+    <button onclick="showTab('tab2')">Порядок технического обслуживания</button>
+    <button onclick="showTab('tab3')">Порядок действий при пожаре</button>
+    <button onclick="showTab('tab4')">Порядок действий при утечке газа</button>
+</nav>
+
+<div id="tab1" class="content active">
+    <h2>Порядок ежедневного обслуживания</h2>
+
+</div>
+
+<div id="tab2" class="content">
+    <h2>Порядок технического обслуживания</h2>
+
+</div>
+
+<div id="tab3" class="content">
+    <h2>Порядок действий при пожаре</h2>
+
+</div>
+
+<div id="tab4" class="content">
+    <h2>Порядок действий при утечке газа</h2>
+
+</div>
+
+
+
+<script>
+    function showTab(tabId) {
+        const tabs = document.querySelectorAll('.content');
+        tabs.forEach(tab => {
+            tab.classList.remove('active');
+        });
+        document.getElementById(tabId).classList.add('active');
+    }
+</script>
+
+</body>
+</html>

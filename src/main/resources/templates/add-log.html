@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Последние добавленные записи</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #003366; /* Тёмно-синий */
+            color: white;
+            padding: 10px 0;
+            text-align: left;
+        }
+        .nav-bar {
+            display: flex;
+            justify-content: flex-end;
+            background-color: #ff9900; /* Оранжевый */
+            padding: 10px;
+        }
+        .nav-bar a {
+            color: white;
+            margin-left: 20px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .nav-bar a:hover {
+            text-decoration: underline;
+        }
+        .content {
+            padding: 20px;
+            background-color: #ffffff; /* Белый фон для содержимого */
+            color: black; /* Черный текст */
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            margin-top: 20px;
+        }
+        .form-control {
+            width: 100%;
+            padding: 10px;
+            margin-top: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        textarea {
+            width: 100%;
+            padding: 10px;
+            margin-top: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            height: 150px; /* Увеличение высоты для textarea */
+            resize: vertical; /* Позволить вертикальное изменение размера */
+        }
+    </style>
+</head>
+<body>
+<header>
+    <h1>Электронная система учёта обслуживания и ремонта "Пихта"</h1>
+</header>
+<div class="nav-bar">
+    <a href="/">Главная страница</a>
+    <a href="/add-log">Добавить запись</a>
+    <a href="/view">Просмотр журнала</a>
+    <a href="/instruction">Справка и инструкции</a>
+</div>
+<div class="content">
+    <h2>Добавить запись</h2>
+    <h4>Номер станции</h4>
+    <form action="/add-log" method="post">
+        <select name="numberStation" class="form-control">
+            <option value="1">№1</option>
+            <option value="2">№2</option>
+            <!-- <option value="3">№3</option> -->
+        </select>
+        <h4>Количество отработанных часов</h4>
+        <input type="number" name="workHours" placeholder="Введите количество отработанных часов" class="form-control"><br>
+        <h4>Давление масла</h4>
+        <input type="number" step="any" name="oilPressure" placeholder="Введите давление масла" class="form-control"><br>
+        <h4>Температура масла</h4>
+        <input type="number" name="oilTemp" placeholder="Введите температуру масла" class="form-control"><br>
+        <h4>Количество долитого масла</h4>
+        <input type="number" name="oilTopping" placeholder="Введите количество долитого масла" class="form-control"><br>
+        <h4>Количество долитой ОЖ</h4>
+        <input type="number" name="antifreezeTopping" placeholder="Введите количество долитой ОЖ" class="form-control"><br>
+        <h4>Температура выхлопа левого коллектора</h4>
+        <input type="number" name="exhaustTempLeft" placeholder="Введите температуру выхлопа левого коллектора" class="form-control"><br>
+        <h4>Температура выхлопа правого коллектора</h4>
+        <input type="number" name="exhaustTempRight" placeholder="Введите температуру выхлопа правого коллектора" class="form-control"><br>
+        <h4>Примечание (не обязательно)</h4>
+        <textarea name="comment" placeholder="Введите примечание" class="form-control"></textarea><br>
+        <button type="submit" class="form-control" style="background-color: #28a745; color: white; border: none;">Добавить запись</button>
+    </form>
+</div>
+</body>
+</html>
