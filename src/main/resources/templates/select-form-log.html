@@ -1,34 +1,153 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title th:text="${title}"/>
+    <title th:text="${title}"></title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #003366;
+            color: white;
+            padding: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        header h1 {
+            text-align: left;
+            margin-left: 20px; /* Отступ слева для красивого выравнивания */
+        }
+        .nav-bar {
+            display: flex;
+            align-items: center;
+        }
+        .nav-links {
+            display: flex;
+        }
+        .nav-links a {
+            color: white;
+            margin-left: 20px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .nav-links a:hover {
+            text-decoration: underline;
+        }
+        .menu-toggle {
+            display: none;
+            font-size: 24px;
+            background: none;
+            border: none;
+            color: white;
+            cursor: pointer;
+        }
+        .container {
+            max-width: 600px;
+            margin: 20px auto;
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+        h1 {
+            text-align: center;
+        }
+        form {
+            margin-top: 15px;
+            display: flex;
+            justify-content: center;
+        }
+        input[type="submit"] {
+            background-color: #ff9900;
+            color: white;
+            border: none;
+            padding: 12px;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+            max-width: 400px;
+        }
+        input[type="submit"]:hover {
+            background-color: #cc7700;
+        }
+
+        /* Адаптация для мобильных устройств */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                width: 100%;
+                background-color: #003366;
+                position: absolute;
+                top: 50px;
+                left: 0;
+                padding: 10px;
+            }
+            .nav-links a {
+                padding: 10px;
+                text-align: center;
+                display: block;
+                margin: 0;
+            }
+            .menu-toggle {
+                display: block;
+            }
+            .container {
+                padding: 10px;
+                margin: 10px;
+            }
+            input[type="submit"] {
+                width: 100%;
+                font-size: 14px;
+                padding: 10px;
+            }
+        }
+    </style>
 </head>
 <body>
-<header class="mb-auto">
-    <div>
-        <h3 class="float-md-start mb-0">Главная страница</h3>
-        <nav class="nav nav-masthead justify-content-center float-md-end">
+
+<header>
+    <h3>Главная страница</h3>
+    <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+    <nav class="nav-bar">
+        <div class="nav-links">
             <a class="nav-link active" aria-current="page" href="/add-log">Добавить запись</a>
             <a class="nav-link" href="/">Просмотр журнала</a>
             <a class="nav-link" href="/instruction">Справка и инструкции</a>
-        </nav>
-    </div>
+        </div>
+    </nav>
 </header>
 
-
-<div class="container mt-5">
-    <h1>Выберете форму записи</h1>
+<div class="container">
+    <h1>Выберите форму записи</h1>
     <form action="">
         <input type="submit" value="Запись ежедневного обслуживания" />
     </form>
     <form action="">
-        <input type="submit" value="Запись технического обслуживания обслуживания" />
+        <input type="submit" value="Запись технического обслуживания" />
     </form>
     <form action="">
         <input type="submit" value="Рапорт об аварии или происшествии" />
     </form>
-
 </div>
+
+<script>
+    function toggleMenu() {
+        var menu = document.querySelector('.nav-links');
+        if (menu.style.display === "flex") {
+            menu.style.display = "none";
+        } else {
+            menu.style.display = "flex";
+        }
+    }
+</script>
+
 </body>
 </html>

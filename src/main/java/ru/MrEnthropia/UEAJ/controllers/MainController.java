@@ -8,7 +8,10 @@ import ru.MrEnthropia.UEAJ.models.Log;
 import ru.MrEnthropia.UEAJ.repositories.LogsRepository;
 
 
+import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.StreamSupport;
 
 @Controller
 public class MainController {
@@ -34,19 +37,17 @@ public class MainController {
 
     @GetMapping("/view")
     public String view( Model model){
-        Iterable<Log> logsStation1 = logsRepository.findByNumberStation(1);
-        Iterable<Log> logsStation2 = logsRepository.findByNumberStation(2);
+        List<Log> logsStation1 = StreamSupport.stream(logsRepository.findByNumberStation(1).spliterator(), false)
+                .sorted(Comparator.comparing(Log::getDateTime).reversed()) // Сортировка от новой к старой
+                .collect(Collectors.toList());
+
+        List<Log> logsStation2 = StreamSupport.stream(logsRepository.findByNumberStation(2).spliterator(), false)
+                .sorted(Comparator.comparing(Log::getDateTime).reversed())
+                .collect(Collectors.toList());
         model.addAttribute("logsStation1", logsStation1);
         model.addAttribute("logsStation2", logsStation2);
 
         return "view";
-
-    }
-
-    @GetMapping("/test")
-    public String test( Model model){
-        model.addAttribute("title", "Тестовая страница");
-        return "test";
 
     }
 

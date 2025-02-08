@@ -12,16 +12,24 @@
             padding: 0;
         }
         header {
-            background-color: #003366; /* Тёмно-синий */
+            background-color: #003366;
             color: white;
-            padding: 10px 0;
-            text-align: left;
-        }
-        .nav-bar {
-            display: flex;
-            justify-content: flex-end;
-            background-color: #ff9900; /* Оранжевый */
             padding: 10px;
+            text-align: center;
+        }
+        header h1 {
+            text-align: left;
+            margin-left: 20px; /* Отступ слева для красивого выравнивания */
+        }
+       .nav-bar {
+            display: flex;
+            justify-content: flex-end; /* Перемещение навигации вправо */
+            align-items: center;
+            background-color: #ff9900;
+            padding: 10px;
+        }
+        .nav-links {
+            display: flex;
         }
         .nav-bar a {
             color: white;
@@ -32,13 +40,21 @@
         .nav-bar a:hover {
             text-decoration: underline;
         }
+        .menu-toggle {
+            display: none;
+            font-size: 24px;
+            background: none;
+            border: none;
+            color: white;
+            cursor: pointer;
+        }
         .content {
             padding: 20px;
-            background-color: #ffffff; /* Белый фон для содержимого */
-            color: black; /* Черный текст */
+            background-color: #ffffff;
+            color: black;
             border-radius: 8px;
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-            margin-top: 20px;
+            margin: 20px;
         }
         table {
             width: 100%;
@@ -49,61 +65,117 @@
             border: 1px solid #003366;
             padding: 10px;
             text-align: left;
+            font-size: 14px;
         }
         th {
             background-color: #003366;
             color: white;
         }
         tr:nth-child(even) {
-            background-color: #e6f0ff; /* Светло-синий */
+            background-color: #e6f0ff;
+        }
+
+        /* АДАПТАЦИЯ ДЛЯ МОБИЛЬНЫХ УСТРОЙСТВ */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                width: 100%;
+                background-color: #ff9900;
+                position: absolute;
+                top: 50px;
+                left: 0;
+                padding: 10px;
+            }
+            .nav-links a {
+                padding: 10px;
+                text-align: center;
+                display: block;
+                margin: 0;
+            }
+            .menu-toggle {
+                display: block;
+            }
+            .content {
+                padding: 10px;
+                margin: 10px;
+            }
+            table {
+                display: block;
+                overflow-x: auto; /* Прокрутка таблицы */
+                white-space: nowrap;
+            }
+            th, td {
+                font-size: 12px;
+                padding: 8px;
+            }
         }
     </style>
 </head>
 <body>
+
 <header>
-    <h1>Электронная система учёта обслуживания и ремонта "Пихта"</h1>
+    <h1>Электронная система учёта обслуживания и ремонта "Лазурит"</h1>
 </header>
+
 <div class="nav-bar">
-    <a href="/">Главная страница</a>
-    <a href="/add-log">Добавить запись</a>
-    <a href="/view">Просмотр журнала</a>
-    <a href="/instruction">Справка и инструкции</a>
+    <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+    <div class="nav-links">
+        <a href="/">Главная</a>
+        <a href="/add-log">Добавить запись</a>
+        <a href="/view">Просмотр журнала</a>
+        <a href="/instruction">Справка</a>
+    </div>
 </div>
+
 <div class="content">
     <h2>Последние добавленные записи</h2>
-    <table>
-        <thead>
-        <tr>
-            <th>Дата и время</th>
-            <th>Номер станции</th>
-            <th>Часы работы</th>
-            <th>Давление масла</th>
-            <th>Температура масла</th>
-            <th>Добавление масла</th>
-            <th>Добавление антифриза</th>
-            <th>Температура выхлопа слева</th>
-            <th>Температура выхлопа справа</th>
-            <th>Примечание</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr th:each="log : ${logs}">
-            <td th:text="${#dates.format(log.dateTime, 'dd.MM.yyyy HH:mm')}"></td>
-            <td th:text="${log.numberStation}"></td>
-            <td th:text="${log.workHours}"></td>
-            <td th:text="${log.oilPressure}"></td>
-            <td th:text="${log.oilTemp}"></td>
-            <td th:text="${log.oilTopping}"></td>
-            <td th:text="${log.antifreezeTopping}"></td>
-            <td th:text="${log.exhaustTempLeft}"></td>
-            <td th:text="${log.exhaustTempRight}"></td>
-            <td th:text="${log.comment}"></td>
-        </tr>
-        </tbody>
-    </table>
+    <div style="overflow-x: auto;">
+        <table>
+            <thead>
+            <tr>
+                <th>Дата и время</th>
+                <th>Номер станции</th>
+                <th>Часы работы</th>
+                <th>Давление масла</th>
+                <th>Температура масла</th>
+                <th>Добавление масла</th>
+                <th>Добавление антифриза</th>
+                <th>Температура выхлопа слева</th>
+                <th>Температура выхлопа справа</th>
+                <th>Примечание</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="log : ${logs}">
+                <td th:text="${#dates.format(log.dateTime, 'dd.MM.yyyy HH:mm')}"></td>
+                <td th:text="${log.numberStation}"></td>
+                <td th:text="${log.workHours}"></td>
+                <td th:text="${log.oilPressure}"></td>
+                <td th:text="${log.oilTemp}"></td>
+                <td th:text="${log.oilTopping}"></td>
+                <td th:text="${log.antifreezeTopping}"></td>
+                <td th:text="${log.exhaustTempLeft}"></td>
+                <td th:text="${log.exhaustTempRight}"></td>
+                <td th:text="${log.comment}"></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
 </div>
+
+<script>
+    function toggleMenu() {
+        var menu = document.querySelector('.nav-links');
+        if (menu.style.display === "flex") {
+            menu.style.display = "none";
+        } else {
+            menu.style.display = "flex";
+        }
+    }
+</script>
+
 </body>
 </html>
-
 
 

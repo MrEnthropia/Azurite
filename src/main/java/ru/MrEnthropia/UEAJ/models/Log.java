@@ -38,7 +38,7 @@ public class Log {
 
     public Log(){
 
-    };
+    }
 
     public Log( int numberStation,  Timestamp dateTime, int workHours, int oilTemp, Double oilPressure, int oilTopping, int antifreezeTopping, int exhaustTempLeft, int exhaustTempRight, String comment) {
 
