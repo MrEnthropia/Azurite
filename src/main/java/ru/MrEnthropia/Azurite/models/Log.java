@@ -1,4 +1,4 @@
-package ru.MrEnthropia.UEAJ.models;
+package ru.MrEnthropia.Azurite.models;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;

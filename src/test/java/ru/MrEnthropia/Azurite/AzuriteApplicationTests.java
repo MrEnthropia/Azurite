@@ -1,10 +1,10 @@
-package ru.MrEnthropia.UEAJ;
+package ru.MrEnthropia.Azurite;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class UeajApplicationTests {
+class AzuriteApplicationTests {
 
 	@Test
 	void contextLoads() {

@@ -1,8 +1,7 @@
-package ru.MrEnthropia.UEAJ.repositories;
+package ru.MrEnthropia.Azurite.repositories;
 
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.repository.CrudRepository;
-import ru.MrEnthropia.UEAJ.models.Log;
+import ru.MrEnthropia.Azurite.models.Log;
 
 import java.util.List;
 

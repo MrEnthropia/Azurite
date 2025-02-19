@@ -1,11 +1,11 @@
-package ru.MrEnthropia.UEAJ.controllers;
+package ru.MrEnthropia.Azurite.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import ru.MrEnthropia.UEAJ.models.Log;
-import ru.MrEnthropia.UEAJ.repositories.LogsRepository;
+import ru.MrEnthropia.Azurite.models.Log;
+import ru.MrEnthropia.Azurite.repositories.LogsRepository;
 
 
 import java.util.Comparator;
