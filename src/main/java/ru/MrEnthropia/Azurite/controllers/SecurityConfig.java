@@ -1,4 +1,4 @@
-package ru.MrEnthropia.UEAJ.controllers;
+package ru.MrEnthropia.Azurite.controllers;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
