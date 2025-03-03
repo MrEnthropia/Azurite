@@ -1,0 +1,17 @@
+#Добавление кнопки
+<form th:action="@{/logout}" method="post" xmlns:th="http://www.thymeleaf.org">
+  <button type="submit">Выйти</button>
+</form>
+#Стиль для неё
+.logout-button {
+background-color: #d9534f;
+color: white;
+border: none;
+padding: 8px 15px;
+cursor: pointer;
+font-size: 14px;
+border-radius: 5px;
+}
+.logout-button:hover {
+background-color: #c9302c;
+}
